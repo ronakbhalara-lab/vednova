@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import logo from '@/assets/TransBGLogo.png';
+import logo from '../../../public/assets/TransBGLogo.png';
 
 const navLinks = [
   { href: '/', label: 'Home' },
