@@ -2,6 +2,7 @@ import { ReactNode, useEffect, useState } from 'react';
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
 import { ArrowUp } from 'lucide-react';
+import { WhatsAppChat } from '../WhatsAppChat';
 
 interface LayoutProps {
   children: ReactNode;
@@ -44,6 +45,9 @@ export function Layout({ children }: LayoutProps) {
       >
         <ArrowUp className="w-5 h-5" />
       </button>
+      
+      {/* WhatsApp Chat Button */}
+      <WhatsAppChat />
     </div>
   );
 }
