@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowRight, ExternalLink } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import ourWorkImage from "@/assets/our-work.png"
 
 const categories = ['All', 'Web Apps', 'Websites', 'Mobile Apps', 'Custom Software'];
 
@@ -163,7 +164,7 @@ export default function Portfolio() {
             {/* RIGHT IMAGE */}
             <div className="relative flex justify-center md:justify-end">
               <img
-                src="/src/assets/our-work.png"
+                src={ourWorkImage}
                 alt="Our Portfolio"
                 className="w-full h-full object-contain"
               />

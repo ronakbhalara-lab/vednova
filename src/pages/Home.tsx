@@ -39,6 +39,7 @@ import { ServiceCard } from '@/components/ui/ServiceCard';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
 import { useEffect, useRef, useState } from 'react';
+import BannerImage from "@/assets/hero-bg.avif"
 
 const services = [
   {
@@ -196,7 +197,7 @@ export default function Home() {
         {/* Image Background */}
         <div className="absolute inset-0 w-full h-full">
           <img
-            src="/src/assets/hero-bg.avif"
+            src={BannerImage}
             alt="Digital Solutions Background"
             className="w-full h-full object-cover"
           />

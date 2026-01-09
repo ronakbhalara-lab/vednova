@@ -1,50 +1,58 @@
 import { Layout } from '@/components/layout/Layout'
+import Team1 from "@/assets/team-1.png"
+import Team2 from "@/assets/team-2.png"
+import Team3 from "@/assets/team-3.png"
+import Team4 from "@/assets/team-4.png"
+import Team5 from "@/assets/team-5.png"
+import Team6 from "@/assets/team-6.png"
+import Team7 from "@/assets/team-7.png"
+import Team8 from "@/assets/team-8.png"
 
 const teamData = {
     ceo: {
         name: 'Rahul Munjani',
         designation: 'CEO',
-        image: '/src/assets/team-1.png'
+        image: Team1
     },
     leaders: [
         {
             name: 'Mayank Ghadiya',
             designation: 'Team Leader',
-            image: '/src/assets/team-2.png'
+            image: Team2
         },
         {
             name: 'Sneha Patel',
             designation: 'Team Leader',
-            image: '/src/assets/team-3.png'
+            image: Team3
         }
     ],
     employees: [
         {
-            name: 'Ronak Bhalara',
-            designation: 'Full Stack Developer',
-            image: '/src/assets/team-4.png'
-        },
-        {
             name: 'Kishan Hadgala',
             designation: 'Full Stack Intern',
-            image: '/src/assets/team-5.png'
+            image: Team4
+        },
+        {
+            name: 'Ronak Bhalara',
+            designation: 'Full Stack Developer',
+            image: Team5
         },
         {
             name: 'Rajkumar Mali',
             designation: 'Full Stack Developer',
-            image: '/src/assets/team-6.png'
+            image: Team6
         }
     ],
     marketing: [
         {
             name: 'Vibhuti Makvana',
             designation: 'Telecaller Executive',
-            image: '/src/assets/team-7.png'
+            image: Team7
         },
         {
             name: 'Krisha Solanki',
             designation: 'Digital Marketing',
-            image: '/src/assets/team-8.png'
+            image: Team8
         }
     ]
 }
