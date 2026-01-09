@@ -1,0 +1,157 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Vednova IT Solution Design System
+   Brand Colors (HSL converted):
+   - Primary Dark: #664930 → 28 36% 29%
+   - Secondary Brown: #997E67 → 26 24% 50%
+   - Neutral Background: #CCBEB1 → 30 24% 75%
+   - Soft Accent: #FFDBBB → 28 100% 86%
+*/
+
+:root {
+  --brand-brown: #654321;
+  --brand-navy: #0A2342;
+  --brand-cream: #FFFBF0;
+}
+
+
+@layer base {
+  :root {
+    /* Vednova Brand Colors */
+    --background: 30 24% 92%;
+    --foreground: 28 36% 20%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 28 36% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 28 36% 20%;
+
+    --primary: 28 36% 29%;
+    --primary-foreground: 30 24% 95%;
+
+    --secondary: 26 24% 50%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 30 24% 85%;
+    --muted-foreground: 28 20% 40%;
+
+    --accent: 28 100% 86%;
+    --accent-foreground: 28 36% 20%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 30 20% 80%;
+    --input: 30 20% 85%;
+    --ring: 28 36% 29%;
+
+    --radius: 0.75rem;
+
+    /* Custom Vednova tokens */
+    --vednova-brown-dark: 28 36% 29%;
+    --vednova-brown-medium: 26 24% 50%;
+    --vednova-neutral: 30 24% 75%;
+    --vednova-cream: 28 100% 86%;
+  }
+
+  .dark {
+    --background: 28 36% 12%;
+    --foreground: 30 24% 92%;
+
+    --card: 28 30% 16%;
+    --card-foreground: 30 24% 92%;
+
+    --popover: 28 30% 16%;
+    --popover-foreground: 30 24% 92%;
+
+    --primary: 28 100% 86%;
+    --primary-foreground: 28 36% 20%;
+
+    --secondary: 26 24% 40%;
+    --secondary-foreground: 30 24% 95%;
+
+    --muted: 28 20% 25%;
+    --muted-foreground: 30 20% 70%;
+
+    --accent: 28 50% 30%;
+    --accent-foreground: 30 24% 92%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 28 20% 25%;
+    --input: 28 20% 25%;
+    --ring: 28 100% 86%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-[#FFFBF0] text-foreground font-sans antialiased overflow-x-hidden;
+  }
+}
+
+@layer utilities {
+  /* Smooth transitions */
+  .transition-smooth {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  /* Hover lift effect */
+  .hover-lift {
+    @apply transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-xl;
+  }
+
+  /* Gradient overlays */
+  .gradient-primary {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%);
+  }
+
+  .gradient-accent {
+    background: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--vednova-neutral)) 100%);
+  }
+
+  /* Text gradient */
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%);
+  }
+
+  /* Glass effect */
+  .glass {
+    @apply bg-white/80 backdrop-blur-md;
+  }
+
+  /* Section padding */
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-20;
+  }
+
+  /* Container max width */
+  .container-custom {
+    @apply px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto;
+  }
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
