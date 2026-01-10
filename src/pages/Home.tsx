@@ -141,7 +141,7 @@ const faqData = [
 ]
 
 const stats = [
-  { value: 3, label: 'Countries', icon: Clock, suffix: '+' },
+  { value: 4, label: 'Countries', icon: Clock, suffix: '+' },
   { value: 20, label: 'Projects Completed', icon: Award, suffix: '+' },
   { value: 40, label: 'Happy Clients', icon: Heart, suffix: '+' },
   { value: 15, label: 'Team Members', icon: Users, suffix: '+' },
@@ -229,7 +229,7 @@ export default function Home() {
                 }}
               />
               <span className="text-sm font-medium">
-                Trusted IT Partner Since 2023
+                Trusted IT Partner Since 2022
               </span>
             </motion.div>
 
@@ -281,7 +281,7 @@ export default function Home() {
                 </Link>
               </Button>
 
-              <Button
+              {/* <Button
                 asChild
                 size="lg"
                 className="
@@ -297,7 +297,7 @@ export default function Home() {
           "
               >
                 <Link to="/portfolio">View Our Working</Link>
-              </Button>
+              </Button> */}
             </motion.div>
           </div>
 
@@ -343,8 +343,8 @@ export default function Home() {
                     <MapPin className="w-5 h-5 text-red-400" />
                   </div>
                   <div>
-                    <h4 className="text-white font-medium">Toronto, Canada</h4>
-                    <p className="text-white/70 text-sm">Canadian Operations</p>
+                    <h4 className="text-white font-medium">Honkong, China</h4>
+                    <p className="text-white/70 text-sm">Asian Operations</p>
                   </div>
                 </div>
 

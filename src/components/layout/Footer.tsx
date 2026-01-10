@@ -139,6 +139,15 @@ export function Footer() {
                 </a>
               </li>
               <li className="flex items-center gap-3">
+                <Phone size={18} className="flex-shrink-0 text-accent" />
+                <a
+                  href="tel:+918469099634"
+                  className="text-primary-foreground/80 hover:text-accent transition-colors text-sm"
+                >
+                  +91 84690 99634
+                </a>
+              </li>
+              <li className="flex items-center gap-3">
                 <Mail size={18} className="flex-shrink-0 text-accent" />
                 <a
                   href="https://mail.google.com/mail/?view=cm&fs=1&to=info@vednovaitsolution.in"

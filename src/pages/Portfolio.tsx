@@ -156,7 +156,7 @@ export default function Portfolio() {
                 </button>
 
                 <button className="border border-[#0A2342]/30 px-7 py-3 rounded-full text-sm font-medium hover:bg-[#0A2342]/5 transition">
-                  Contact Us
+                 <Link to="/contact">Contact Us</Link>
                 </button>
               </div>
             </div>
@@ -221,9 +221,9 @@ export default function Portfolio() {
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                       />
                       <div className="absolute inset-0 bg-[#0A2342]/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <motion.div className="w-12 h-12 rounded-full bg-[#654321] flex items-center justify-center">
+                        {/* <motion.div className="w-12 h-12 rounded-full bg-[#654321] flex items-center justify-center">
                           <ExternalLink className="w-5 h-5 text-[#FFFBF0]" />
-                        </motion.div>
+                        </motion.div> */}
                       </div>
                       <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-[#654321] text-xs font-medium text-[#FFFBF0]">
                         {project.category}

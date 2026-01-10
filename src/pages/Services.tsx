@@ -375,7 +375,7 @@ export default function Services() {
         </section>
 
         {/* Process Section */}
-        <section className="section-padding bg-[#FFFBF0]">
+        <section className="section-padding !pt-4 bg-[#FFFBF0]">
           <div className="container-custom">
             <SectionHeader
               label="Our Process"

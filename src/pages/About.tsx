@@ -185,7 +185,7 @@ export default function About() {
                 </h1>
 
                 <p className="mt-3 text-[#654321]/80 text-base leading-relaxed max-w-md">
-                  Since 2014, Vednova IT Solution has been delivering reliable,
+                  Since 2022, Vednova IT Solution has been delivering reliable,
                   scalable, and future-ready IT services that empower businesses
                   to grow with confidence.
                 </p>

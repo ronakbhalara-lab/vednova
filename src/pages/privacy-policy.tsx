@@ -1,4 +1,7 @@
+import { Button } from "@/components/ui/button";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Policy = () => {
   return (
@@ -13,7 +16,43 @@ const Policy = () => {
       </header>
 
       {/* Content */}
-      <main className="max-w-5xl mx-auto px-5 py-12 space-y-10">
+      <main className="max-w-5xl mx-auto px-5 py-12 pt-4 space-y-10">
+
+        <Button
+          asChild
+          size="lg"
+          className="
+    group
+    bg-[#FFFBF0]
+    text-[#0A2342]
+    hover:bg-[#FFFBF0]
+    hover:text-[#0A2342]
+  "
+        >
+          <Link to="/" className="inline-flex !p-0 items-center gap-2">
+            <ArrowLeft className="w-5 h-5" />
+            {/* Text Wrapper */}
+            <span className="relative inline-block">
+              Back to Home
+
+              {/* Underline */}
+              <span
+                className="
+          absolute
+          left-0
+          bottom-0
+          h-[2px]
+          w-full
+          bg-[#0A2342]
+          scale-x-0
+          origin-left
+          transition-transform duration-300 ease-out
+          group-hover:scale-x-100
+        "
+              />
+            </span>
+          </Link>
+        </Button>
 
         <Section title="Introduction">
           Vednova - The Software Company (“Vednova”, “we”, “our”, or “us”) respects
