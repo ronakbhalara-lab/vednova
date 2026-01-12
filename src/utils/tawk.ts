@@ -14,7 +14,7 @@ export const loadTawkTo = () => {
   const script = document.createElement("script");
   script.id = "tawk-script";
   script.async = true;
-  script.src = "https://embed.tawk.to/6961f23de4ca97197dcdc909/1jej9kh7g";
+  script.src = "https://embed.tawk.to/69621de7f9c7721976042da1/1jejk9l3q";
   script.setAttribute("crossorigin", "*");
 
   document.body.appendChild(script);
