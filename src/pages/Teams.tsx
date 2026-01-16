@@ -30,12 +30,12 @@ const teamData = {
         {
             name: 'Kishan Hadgala',
             designation: 'Full Stack Intern',
-            image: Team4
+            image: Team5
         },
         {
             name: 'Ronak Bhalara',
             designation: 'Full Stack Developer',
-            image: Team5
+            image: Team4
         },
         {
             name: 'Rajkumar Mali',
