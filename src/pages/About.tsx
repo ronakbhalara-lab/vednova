@@ -79,11 +79,6 @@ const teamData = {
       name: 'Vibhuti Makvana',
       designation: 'Telecaller Executive',
       image: Team7
-    },
-    {
-      name: 'Krisha Solanki',
-      designation: 'Digital Marketing',
-      image: Team8
     }
   ]
 }

@@ -1,4 +1,5 @@
 import { Layout } from '@/components/layout/Layout'
+import { useNavigate } from 'react-router-dom'
 import Team1 from "@/assets/team-1.png"
 import Team2 from "@/assets/team-2.png"
 import Team3 from "@/assets/team-3.png"
@@ -6,58 +7,66 @@ import Team4 from "@/assets/team-4.png"
 import Team5 from "@/assets/team-5.png"
 import Team6 from "@/assets/team-6.png"
 import Team7 from "@/assets/team-7.png"
-import Team8 from "@/assets/team-8.png"
+import Team8 from "@/assets/hiring.jpg"
 
 const teamData = {
     ceo: {
         name: 'Rahul Munjani',
         designation: 'CEO',
-        image: Team1
+        image: Team1,
+        isClick: false
     },
     leaders: [
         {
             name: 'Mayank Ghadiya',
             designation: 'Team Leader',
-            image: Team2
+            image: Team2,
+            isClick: false
         },
         {
             name: 'Sneha Patel',
             designation: 'Team Leader',
-            image: Team3
+            image: Team3,
+            isClick: false
         }
     ],
     employees: [
         {
             name: 'Kishan Hadgala',
             designation: 'Full Stack Intern',
-            image: Team5
+            image: Team5,
+            isClick: false
         },
         {
             name: 'Ronak Bhalara',
             designation: 'Full Stack Developer',
-            image: Team4
+            image: Team4,
+            isClick: false
         },
         {
             name: 'Rajkumar Mali',
             designation: 'Full Stack Developer',
-            image: Team6
+            image: Team6,
+            isClick: false
         }
     ],
     marketing: [
         {
             name: 'Vibhuti Makvana',
             designation: 'Telecaller Executive',
-            image: Team7
+            image: Team7,
+            isClick: false
         },
         {
-            name: 'Krisha Solanki',
-            designation: 'Digital Marketing',
-            image: Team8
+            name: "We're Hiring",
+            designation: 'Join Our Team',
+            image: Team8,
+            isClick: true
         }
     ]
 }
 
-const Card = ({ name, designation, image }) => (
+const Card = ({ name, designation, image, isClick, onApplyClick }) => (
     <div className="
     flex flex-col justify-center items-center
     bg-[#fff]
@@ -80,6 +89,15 @@ const Card = ({ name, designation, image }) => (
         <p className="text-sm text-[#654321]/80 text-center">
             {designation}
         </p>
+        {isClick && (
+            <button 
+                onClick={onApplyClick}
+                className="mt-2 text-[#0A2342] font-sans font-semibold text-[13px] transition-colors relative group"
+            >
+                Apply Now
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#0A2342] transition-all duration-300 group-hover:w-full"></span>
+            </button>
+        )}
     </div>
 )
 
@@ -93,6 +111,12 @@ const Section = ({ title, children }) => (
 )
 
 const Teams = () => {
+    const navigate = useNavigate()
+
+    const handleApplyClick = () => {
+        navigate('/hiring')
+    }
+
     return (
         <Layout>
             <section className='container-custom bg-[#FFFBF0]'>
@@ -101,7 +125,7 @@ const Teams = () => {
                     {/* CEO */}
                     <Section title="Founder & CEO">
                         <div className="flex justify-center">
-                            <Card {...teamData.ceo} />
+                            <Card {...teamData.ceo} onApplyClick={undefined} />
                         </div>
                     </Section>
 
@@ -111,7 +135,7 @@ const Teams = () => {
                     <Section title="Team Leaders">
                         <div className="grid grid-cols-1 sm:grid-cols-2 justify-items-center gap-4 sm:gap-6">
                             {teamData.leaders.map((leader, index) => (
-                                <Card key={index} {...leader} />
+                                <Card key={index} {...leader} onApplyClick={undefined} />
                             ))}
                         </div>
                     </Section>
@@ -122,7 +146,7 @@ const Teams = () => {
                     <Section title="Full Stack Developer">
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 justify-items-center">
                             {teamData.employees.map((employee, index) => (
-                                <Card key={index} {...employee} />
+                                <Card key={index} {...employee} onApplyClick={undefined} />
                             ))}
                         </div>
                     </Section>
@@ -133,7 +157,7 @@ const Teams = () => {
                     <Section title="Sales Team">
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 sm:gap-6 justify-items-center">
                             {teamData.marketing.map((employee, index) => (
-                                <Card key={index} {...employee} />
+                                <Card key={index} {...employee} onApplyClick={index === 1 ? handleApplyClick : undefined} />
                             ))}
                         </div>
                     </Section>

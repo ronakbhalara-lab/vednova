@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Linkedin, Instagram, Facebook, Mail, Phone, MapPin } from 'lucide-react';
+import { Linkedin, Instagram, Facebook, Mail, Phone, MapPin, Youtube } from 'lucide-react';
 import logo from '@/assets/TransBGLogo.png';
 
 const quickLinks = [
@@ -24,6 +24,7 @@ const socialLinks = [
   { href: 'https://www.linkedin.com/company/vednova-it-solution/posts/?feedView=all', icon: Linkedin, label: 'LinkedIn' },
   { href: 'https://www.instagram.com/vednova.it.solution_/', icon: Instagram, label: 'Instagram' },
   { href: 'https://www.facebook.com/vednovaitsolution1', icon: Facebook, label: 'Facebook' },
+  { href: 'https://www.youtube.com/@vednovaitsolution', icon: Youtube, label: 'YouTube' },
 ];
 
 export function Footer() {
@@ -144,7 +145,7 @@ export function Footer() {
                   href="tel:+918469099634"
                   className="text-primary-foreground/80 hover:text-accent transition-colors text-sm"
                 >
-                  +91 84690 99634
+                  +91 75748 02245
                 </a>
               </li>
               <li className="flex items-center gap-3">

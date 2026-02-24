@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, Linkedin, Instagram, Facebook, Clock, Youtube } from 'lucide-react';
 import { Layout } from '@/components/layout/Layout';
@@ -19,7 +20,7 @@ const contactInfo = [
   {
     icon: Phone,
     title: 'Call Us',
-    details: ['+91 99740 37039', '+91 84690 99634'],
+    details: ['+91 99740 37039', '+91 75748 02245'],
   },
   {
     icon: Mail,
@@ -43,13 +44,18 @@ const socialLinks = [
 export default function Contact() {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
     service: '',
+    otherService: '',
     message: '',
   });
+
+  const [files, setFiles] = useState<File[]>([]);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -77,28 +83,33 @@ export default function Contact() {
       [name]: value,
     }));
   };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/contact/send-email`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          service: formData.service,
-          message: formData.message,
-        }),
+      const form = new FormData();
+
+      form.append("Name", formData.name);
+      form.append("Email", formData.email);
+      form.append("Phone", formData.phone);
+      form.append("Service", formData.service === 'other' ? formData.otherService : formData.service);
+      form.append("Message", formData.message);
+
+      // 🔥 multiple files
+      files.forEach((file) => {
+        form.append("files", file);
       });
 
-      if (!response.ok) {
-        throw new Error("Failed to send message");
-      }
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/contact/send-email`,
+        {
+          method: "POST",
+          body: form,
+        }
+      );
+
+      if (!response.ok) throw new Error("Failed");
 
       toast({
         title: "Message Sent",
@@ -110,19 +121,29 @@ export default function Contact() {
         email: "",
         phone: "",
         service: "",
+        otherService: "",
         message: "",
       });
+
+      setFiles([]);
+      // 🔥 clear file input UI
+      if (fileInputRef.current) {
+        fileInputRef.current.value = "";
+      }
+
 
     } catch (error) {
       toast({
         title: "Error",
-        description: "Something went wrong. Please try again later.",
+        description: "Something went wrong. Try again.",
         variant: "destructive",
       });
     } finally {
       setIsSubmitting(false);
     }
   };
+
+
 
   // const handleSubmit = async (e: React.FormEvent) => {
   //   e.preventDefault();
@@ -173,12 +194,12 @@ export default function Contact() {
 
             {/* Contact Form */}
             <AnimatedSection direction="left">
-              <div className="bg-white rounded-3xl p-8 md:p-10 shadow-lg border border-[#654321]/20">
-                <h3 className="text-2xl font-bold text-[#0A2342] mb-6">
+              <div className="bg-white rounded-3xl p-3 md:p-6 md:px-8 shadow-lg border border-[#654321]/20">
+                <h3 className="text-xl font-bold text-[#0A2342] mb-3">
                   Send Us a Message
                 </h3>
 
-                <form onSubmit={handleSubmit} className="space-y-5">
+                <form onSubmit={handleSubmit} className="space-y-4">
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div className="space-y-2">
@@ -251,6 +272,21 @@ export default function Contact() {
                         <option value="other">Other</option>
                       </select>
                     </div>
+
+                    {formData.service === 'other' && (
+                      <div className="space-y-2">
+                        <Label htmlFor="otherService">Please specify the service *</Label>
+                        <Input
+                          id="otherService"
+                          name="otherService"
+                          placeholder="Enter the service you're interested in"
+                          value={formData.otherService}
+                          onChange={handleChange}
+                          required={formData.service === 'other'}
+                          className="bg-[#FFFBF0]"
+                        />
+                      </div>
+                    )}
                   </div>
 
                   <div className="space-y-2">
@@ -265,6 +301,75 @@ export default function Contact() {
                       required
                       className="bg-[#FFFBF0] resize-none"
                     />
+                  </div>
+
+                  {/* PDF And Other Image Upload Option */}
+                  <div className="space-y-2">
+                    <Label>CV Attachment</Label>
+
+                    <div className="relative">
+                      <input
+                        ref={fileInputRef}
+                        type="file"
+                        multiple
+                        accept=".pdf,image/*"
+                        onChange={(e) => {
+                          if (!e.target.files) return;
+
+                          const newFiles = Array.from(e.target.files);
+                          let updatedFiles = [...files];
+
+                          for (let file of newFiles) {
+                            if (updatedFiles.length >= 5) {
+                              toast({
+                                title: "Max 5 files allowed",
+                                description: "Remove file to add new",
+                                variant: "destructive",
+                              });
+                              break;
+                            }
+
+                            const exists = updatedFiles.find(f => f.name === file.name);
+                            if (!exists) updatedFiles.push(file);
+                          }
+
+                          setFiles(updatedFiles);
+
+                          // reset native input
+                          if (fileInputRef.current) fileInputRef.current.value = "";
+                        }}
+                        className="file:mr-4 file:px-3 file:py-1 file:border-0 file:bg-[#E8E1D4] file:rounded-md file:text-sm"
+                      />
+
+                      {/* 🔥 fake text over native */}
+                      {/* <div className="absolute right-3 top-2 text-xs text-gray-500 pointer-events-none">
+                        {files.length === 0
+                          ? "No file chosen"
+                          : `${files.length} file${files.length > 1 ? "s" : ""} selected`}
+                      </div> */}
+                    </div>
+
+                    {/* selected list */}
+                    {files.length > 0 && (
+                      <div className="text-sm text-green-600 space-y-2">
+                        {files.map((f, i) => (
+                          <div key={i} className="flex items-center justify-between bg-green-50 px-3 py-1 rounded">
+                            <span>📎 {f.name}</span>
+
+                            <button
+                              type="button"
+                              onClick={() => {
+                                const updated = files.filter((_, index) => index !== i);
+                                setFiles(updated);
+                              }}
+                              className="text-red-500 text-xs font-semibold ml-3"
+                            >
+                              Remove
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
 
                   <Button
@@ -374,7 +479,7 @@ export default function Contact() {
             </p>
 
             <p className="text-[#654321] font-medium">
-              Response time: Within 24 hours
+              Response time: Within 1 hours
             </p>
           </AnimatedSection>
         </div>

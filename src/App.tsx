@@ -12,6 +12,7 @@ import NotFound from "./pages/NotFound";
 import Policy from "./pages/privacy-policy";
 import Terms from "./pages/Terms";
 import Teams from "./pages/Teams";
+import Hiring from "./pages/Hiring";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +31,7 @@ const App = () => (
           <Route path="/privacy-policy" element={<Policy />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/teams" element={<Teams />} />
+          <Route path="/hiring" element={<Hiring />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

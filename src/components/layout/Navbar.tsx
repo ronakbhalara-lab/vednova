@@ -11,6 +11,7 @@ const navLinks = [
   { href: '/about', label: 'About Us' },
   { href: '/portfolio', label: 'Our Work' },
   { href: '/teams', label: 'Teams' },
+  { href: '/hiring', label: 'Carrers' },
 ];
 
 export function Navbar() {
